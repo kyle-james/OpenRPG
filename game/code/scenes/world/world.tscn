@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/textures/tiles/base/dirt-grass_border/007.png" type="Texture" id=16]
 [ext_resource path="res://assets/textures/tiles/base/dirt-grass_border/008.png" type="Texture" id=17]
 [ext_resource path="res://assets/textures/tiles/base/grass-dirt_border/000.png" type="Texture" id=18]
-[ext_resource path="res://code/scenes/entities/Player.tscn" type="PackedScene" id=19]
+[ext_resource path="res://code/scenes/entities/player/Player.tscn" type="PackedScene" id=19]
 
 [sub_resource type="TileSet" id=1]
 0/name = "000.png 0"
