@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/scenes/world/gen/dungeon/creator.gd" type="Script" id=1]
+[ext_resource path="res://code/creator.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/tiles/dungeon/generation/ids.png" type="Texture" id=2]
 
 [sub_resource type="TileSet" id=1]
