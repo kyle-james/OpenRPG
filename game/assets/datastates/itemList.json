@@ -1,0 +1,12 @@
+{
+	"1":{
+		"name": "Longboi",
+		"price": 500,
+		"texture": ".default/textures/items/weapons/swords/longboi.png"
+	},
+	"2":{
+		"name": "Shortboi",
+		"price": 300,
+		"texture": ".default/textures/items/weapons/swords/longboi.png"
+	}
+}

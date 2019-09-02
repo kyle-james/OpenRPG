@@ -72,13 +72,13 @@ func _ready():
 			var mapJ = j * (height - 2); #these variables fix the 18x18 grid issue, allowing checking out of array bounds
 
 			if grid[i][j] == 0: #this part finds all grid[i][j] with a value of 2 and fills the real map with a 16x16 void 'room'
-				for ia in range(mapI, mapI + width):
-					for ja in range(mapJ, mapJ + height):
+				for ia in range(mapI, mapI + (width - 2)):
+					for ja in range(mapJ, mapJ + (height - 2)):
 						get_node("Dungeon").set_cell(ia, ja, 2)
 
 			if grid[i][j] == 1: #this part builds all grid[i][j] with value of 1 into 16x16 squares of stone bricks. basically floor layout
-				for ia in range(mapI, mapI + width):
-					for ja in range(mapJ, mapJ + height):
+				for ia in range(mapI, mapI + (width - 2)):
+					for ja in range(mapJ, mapJ + (height - 2)):
 						get_node("Dungeon").set_cell(ia, ja, 0)
 
 						if(ia == mapI): #this part checks and builds the correct walls on the left side of rooms
@@ -107,7 +107,7 @@ func _ready():
 								for k in range(11, 16):
 									if(ja == mapJ + k):
 										get_node("Dungeon").set_cell(ia, ja, 3)
-			
+
 							if(grid[i+1][j] == 200): #if there's a vertical straight to the right, it makes sure it doesn't open up the wall
 								get_node("Dungeon").set_cell(ia, ja, 3)
 
@@ -122,7 +122,7 @@ func _ready():
 								for k in range(11, 16):
 									if(ia == mapI + k):
 										get_node("Dungeon").set_cell(ia, ja, 3)
-			
+
 							if(grid[i][j-1] == 100): #if there's a horizontal straight to the top, it makes sure it doesn't open up the wall
 								get_node("Dungeon").set_cell(ia, ja, 3)
 
@@ -141,10 +141,38 @@ func _ready():
 							if(grid[i][j+1] == 100): #if there's a horizontal striaght to the bottom, it makes sure it doesn't open up the wall
 								get_node("Dungeon").set_cell(ia, ja, 3)
 
-			if grid[i][j] == 2: #this part builds all grid[i][j] with value of 1 into 16x16 squares of light stone bricks.
-				for ia in range(mapI, mapI + width):
-					for ja in range(mapJ, mapJ + height):
-						get_node("Dungeon").set_cell(ia, ja, 1)
+						if(ia == mapI) and (ja == mapJ): # if the current tile is in the top left
+							if(grid[i-1][j] == 1) and (grid[i][j-1] == 1) and (grid[i-1][j-1] != 1): #if the chunk to the top and to the left are rooms, place a wall
+								get_node("Dungeon").set_cell(ia, ja, 3)
+
+							if(grid[i][j-1] == 1) and (grid[i-1][j] == 1) and (grid[i-1][j-1] != 1): #if the chunk to the left and to the top are rooms, place a wall
+								get_node("Dungeon").set_cell(ia, ja, 3)
+
+						if(ia == mapI) and (ja == mapJ + (height - 3)): #if the current tile is in the bottom left
+							if(grid[i-1][j] == 1) and (grid[i][j+1] == 1) and (grid[i-1][j+1] != 1): #if the chunk to the bottom anf to the left are rooms, place a wall
+								get_node("Dungeon").set_cell(ia, ja, 3)
+
+							if(grid[i-1][j] == 1) and (grid[i][j+1] == 1) and (grid[i-1][j+1] != 1): #if the chunk to the left and to the bottom are rooms, place a wall
+								get_node("Dungeon").set_cell(ia, ja, 3)
+
+						if(ia == mapI + (width - 3)) and (ja == mapJ): #if the current tile is in the top right
+							if(grid[i+1][j] == 1) and (grid[i][j-1] == 1) and (grid[i+1][j-1] != 1): #if the chunk to the left and to the bottom are rooms, place a wall
+								get_node("Dungeon").set_cell(ia, ja, 3)
+
+#							if(grid[i+1][j] == 1) and (grid[i][j-1] == 1) and (grid[i+1][j-1] != 1): #if the chunk to the bottom and to the left are rooms, place a wall
+#								get_node("Dungeon").set_cell(ia, ja, 2)
+
+						if(ia == mapI + (width - 3)) and (ja == mapJ + (height - 3)): #if the current tile is in the bottom right
+							if(grid[i+1][j] == 1) and (grid[i][j+1] == 1) and (grid[i+1][j+1] != 1): #if the chunk to the bottom and to the right are rooms, place a wall
+								get_node("Dungeon").set_cell(ia, ja, 3)
+
+							if(grid[i][j+1] == 1) and (grid[i+1][j] == 1) and (grid[i+1][j+1] != 1): #if the chunk to the right and to the bottom are rooms, place a wall
+								get_node("Dungeon").set_cell(ia, ja, 3)
+
+#			if grid[i][j] == 2: #this part builds all grid[i][j] with value of 2 into 16x16 squares of light stone bricks.
+#				for ia in range(mapI, mapI + width):
+#					for ja in range(mapJ, mapJ + height):
+#						get_node("Dungeon").set_cell(ia, ja, 1)
 
 			if grid[i][j] == 100: #this is the horizontal hallway generation - COMPLETE ####TODO - comment better ####
 				for ia in range(mapI, mapI + width):
@@ -247,7 +275,7 @@ func _ready():
 				for ia in range(mapI, mapI + (width - 2)):
 					for ja in range(mapJ, mapJ + (height - 2)):
 						get_node("Dungeon").set_cell(ia, ja, 2)
-	pass
+
 #       _                                    _                 _                _             __ _                                  _ _  __       _             
 #      | |                                  (_)               | |              | |           / _| |                                | (_)/ _|     (_)            
 #   ___| |__   __ _ _ __   __ _  ___  __   ___  _____      __ | |__   __ _  ___| | __   __ _| |_| |_ ___ _ __   _ __ ___   ___   __| |_| |_ _   _ _ _ __   __ _ 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://code/scenes/entities/player/PlayerBody.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/entities/player.png" type="Texture" id=2]
+[ext_resource path="res://code/scenes/util/JSONHandler.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/entities/player.png" type="Texture" id=3]
+[ext_resource path="res://code/scenes/gui/hud/hud.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.1231
@@ -12,16 +14,17 @@ height = 5.00851
 [node name="PlayerBody" type="KinematicBody2D" parent="."]
 script = ExtResource( 1 )
 
+[node name="JSONHandler" parent="PlayerBody" instance=ExtResource( 2 )]
+
 [node name="PlayerCollision" type="CollisionShape2D" parent="PlayerBody"]
 shape = SubResource( 1 )
 
 [node name="PlayerTexture" type="Sprite" parent="PlayerBody"]
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Camera2D" type="Camera2D" parent="PlayerBody"]
 current = true
-process_mode = 0
-limit_smoothed = true
-smoothing_enabled = true
+
+[node name="Control" parent="PlayerBody/Camera2D" instance=ExtResource( 4 )]

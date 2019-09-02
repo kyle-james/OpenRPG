@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://code/scenes/gui/hud/inventory/inventory.gd" type="Script" id=1]
+[ext_resource path="res://code/scenes/util/JSONHandler.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+#var path_itemList = \"user://resourcepacks/.default/datastates/itemList.json\"
+#var itemDictionary = {}
+#var itemName = \"\"
+#var itemPrice = 0
+#var itemTexture = \"\"
+#var item = \"\"
+#
+#var count = 0;
+#
+#func generateItemList():
+#	var data_file = File.new()
+#	if data_file.open(path_itemList, File.READ) != OK:
+#		return
+#	var data_text = data_file.get_as_text()
+#	data_file.close()
+#	var data_parse = JSON.parse(data_text)
+#	if data_parse.error != OK:
+#		return
+#	count = (data_parse.result);
+#	for child in (count):
+#		var itemName = data_parse.result[str(child)].name;
+#		var itemPrice = data_parse.result[str(child)].price;
+#		var itemTexture = data_parse.result[str(child)].texture;
+#
+#		itemName = (str(\"\\\"\" + itemName + \"\\\"\"))
+#		itemTexture = (str(\"\\\"\" + itemTexture + \"\\\"\"))
+#
+#		itemDictionary = {
+#			child: {
+#				\"\\\"itemName\\\"\": itemName,
+#				\"\\\"itemValue\\\"\": itemPrice,
+#				\"\\\"itemIcon\\\"\": itemTexture
+#			}
+#		};
+#		item = str(\"{\\\"\", child, \"\\\":\", itemDictionary[child], \"}\")
+#		print(item)"
+
+[node name="Node" type="Control"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+script = SubResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1408.0
+margin_top = -540.0
+margin_right = -1272.0
+margin_bottom = -352.0
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+margin_left = 4.0
+margin_top = 24.0
+margin_right = 4.0
+margin_bottom = 24.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 4
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="Panel"]
+margin_right = 136.0
+margin_bottom = 20.0
+text = "Bag"
+align = 1
+valign = 1
+
+[node name="JSONHandler" parent="." instance=ExtResource( 2 )]
