@@ -16,7 +16,7 @@ func _ready():
 		dir.make_dir("user://resourcepacks/.default")
 		dir.make_dir("user://resourcepacks/.default/datastates")
 		dir.make_dir("user://resourcepacks/.default/textures")
-		dir.copy("res://*", "user://")
+#v
 
 #func generateItemList():
 #	var data_file = File.new()

@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://code/scenes/entities/player/PlayerBody.gd" type="Script" id=1]
 [ext_resource path="res://code/scenes/util/JSONHandler.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/textures/entities/player.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/entities/player_front.png" type="Texture" id=3]
 [ext_resource path="res://code/scenes/gui/hud/hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/textures/shaders/torch.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 16.1231
-height = 5.00851
+radius = 8.79164
+height = 35.9188
 
 [node name="Player" type="Node2D"]
 
 [node name="PlayerBody" type="KinematicBody2D" parent="."]
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="JSONHandler" parent="PlayerBody" instance=ExtResource( 2 )]
@@ -22,9 +24,17 @@ shape = SubResource( 1 )
 [node name="PlayerTexture" type="Sprite" parent="PlayerBody"]
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 32, 32 )
+region_rect = Rect2( 19, 7, 26, 49 )
 
 [node name="Camera2D" type="Camera2D" parent="PlayerBody"]
+position = Vector2( 0, 0.50069 )
 current = true
 
 [node name="Control" parent="PlayerBody/Camera2D" instance=ExtResource( 4 )]
+
+[node name="Light2D" type="Light2D" parent="PlayerBody"]
+light_mask = 2
+texture = ExtResource( 5 )
+texture_scale = 0.5
+shadow_enabled = true
+shadow_filter_smooth = 3.0
