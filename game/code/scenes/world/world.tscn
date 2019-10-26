@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://code/scenes/world/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/tiles/base/dirt-grass_border/000.png" type="Texture" id=2]
@@ -22,6 +22,14 @@
 [ext_resource path="res://code/scenes/entities/player/Player.tscn" type="PackedScene" id=20]
 [ext_resource path="res://code/scenes/objects/portal/portal.tscn" type="PackedScene" id=21]
 [ext_resource path="res://icon.png" type="Texture" id=22]
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=4]
+vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="TileSet" id=1]
 0/name = "000.png 0"
@@ -72,6 +80,7 @@
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
+4/navigation = SubResource( 4 )
 4/shapes = [  ]
 4/z_index = 0
 5/name = "005.png 5"
@@ -172,6 +181,7 @@
 14/tile_mode = 0
 14/occluder_offset = Vector2( 0, 0 )
 14/navigation_offset = Vector2( 0, 0 )
+14/navigation = SubResource( 3 )
 14/shapes = [  ]
 14/z_index = 0
 15/name = "006.png 15"
