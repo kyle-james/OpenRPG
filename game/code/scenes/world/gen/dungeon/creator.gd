@@ -290,7 +290,7 @@ func setTileM(var i, var j, var k):
 	get_node("TileMap").set_cell(i, j, k)
 
 func setTileD(var i, var j, var k):
-	get_node("Dungeon").set_cell(i, j, k)
+	get_node("Navigation2D/Dungeon").set_cell(i, j, k)
 
 #       _                                    _                 _                _             __ _                                  _ _  __       _             
 #      | |                                  (_)               | |              | |           / _| |                                | (_)/ _|     (_)            
