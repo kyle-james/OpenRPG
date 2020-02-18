@@ -1,20 +1,20 @@
 {
-	"Test_Test1":{
-		"name": "Test Item 1",
+	"CantherKi_Sword":{
+		"name": "Sword",
 		"price": 500,
 		"type": "weapon",
 		"texture": "user://game/content/textures/items/weapons/swords/longboi.png",
 		"enabled": true
 	},
-	"Test_Test2":{
-		"name": "Test Item 2",
+	"CantherKi_Dagger":{
+		"name": "Dagger",
 		"price": 300,
 		"type": "weapon",
-		"texture": "user://game/content/textures/items/weapons/swords/longboi.png",
+		"texture": "user://resourcepacks/CantherKi/graphics/shortswords/dagger.png",
 		"enabled": true
 	},
-	"Test_Test3":{
-		"name": "Test Item 3",
+	"CantherKi_Cutlass":{
+		"name": "Cutlass",
 		"price": 100,
 		"type": "weapon",
 		"texture": "user://game/content/textures/items/weapons/swords/longboi.png",
