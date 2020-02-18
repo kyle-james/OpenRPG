@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://code/scenes/world/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/tiles/base/dirt-grass_border/000.png" type="Texture" id=2]
@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/textures/tiles/base/grass-dirt_border/000.png" type="Texture" id=19]
 [ext_resource path="res://code/scenes/entities/player/Player.tscn" type="PackedScene" id=20]
 [ext_resource path="res://code/scenes/objects/portal/portal.tscn" type="PackedScene" id=21]
-[ext_resource path="res://icon.png" type="Texture" id=22]
+[ext_resource path="res://code/scenes/objects/hazards/spikes/spikes.tscn" type="PackedScene" id=22]
 
 [sub_resource type="TileSet" id=1]
 0/name = "000.png 0"
@@ -205,9 +205,6 @@
 17/shapes = [  ]
 17/z_index = 0
 
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 0, 0, 0, 64, 64, 64, 64, 0 )
-
 [node name="Node2D" type="Node2D"]
 z_as_relative = false
 script = ExtResource( 1 )
@@ -224,11 +221,5 @@ tile_data = PoolIntArray( -1179680, 13, 0, -1179679, 13, 0, -1179678, 13, 0, -11
 [node name="Portal" parent="." instance=ExtResource( 21 )]
 position = Vector2( 174.16, -81.0579 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -101.187, -110.767 )
-texture = ExtResource( 22 )
-centered = false
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
-position = Vector2( -0.598755, 0 )
-occluder = SubResource( 2 )
+[node name="Spike" parent="." instance=ExtResource( 22 )]
+position = Vector2( -158.825, -82.6304 )

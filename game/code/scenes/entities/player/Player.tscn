@@ -30,10 +30,11 @@ region_rect = Rect2( 19, 7, 26, 49 )
 position = Vector2( 0, 0.50069 )
 current = true
 
-[node name="Control" parent="PlayerBody/Camera2D" instance=ExtResource( 4 )]
+[node name="HUD" parent="PlayerBody/Camera2D" instance=ExtResource( 4 )]
 
 [node name="Light2D" type="Light2D" parent="PlayerBody"]
 light_mask = 2
+enabled = false
 texture = ExtResource( 5 )
 texture_scale = 0.5
 shadow_enabled = true

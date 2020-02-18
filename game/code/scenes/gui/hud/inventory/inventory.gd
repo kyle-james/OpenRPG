@@ -1,32 +1,10 @@
 extends GridContainer;
-
-#https://github.com/Oen44/Godot-Inventory/blob/master/Inventory.gd
 const ItemClass = preload("item.gd");
 const ItemSlotClass = preload("itemSlot.gd");
 
+var list = preload("res://code/scenes/util/JSONHandler.gd").new()
+
 const slotTexture = preload("res://assets/textures/gui/inventory/tile.png");
-
-const itemImages = [
-	preload("res://assets/textures/items/weapons/swords/longboi.png")
-];
-
-var itemDictionary = {
-	0: {
-		"itemName": "Ring",
-		"itemValue": 456,
-		"itemIcon": itemImages[0]
-	},
-	1: {
-		"itemName": "Sword",
-		"itemValue": 100,
-		"itemIcon": itemImages[0]
-	},
-	2: {
-		"itemName": "Iron Ring",
-		"itemValue": 987,
-		"itemIcon": itemImages[0]
-	},
-};
 
 var slotList = Array();
 var itemList = Array();
@@ -34,20 +12,21 @@ var itemList = Array();
 var holdingItem = null;
 
 func _ready():
+	list.loadItemSets();
+	var itemDictionary = list.itemDictionary
 	for item in itemDictionary:
 		var itemName = itemDictionary[item].itemName;
-		var itemIcon = itemDictionary[item].itemIcon;
+		var itemIcon:Texture = itemDictionary[item].itemIcon;
 		var itemValue = itemDictionary[item].itemValue;
-		itemList.append(ItemClass.new(itemName, itemIcon, null, itemValue));
+		var itemSource = itemDictionary[item].itemSource;
+		itemList.append(ItemClass.new(itemName, itemIcon, null, itemValue, itemSource));
 	
 	for i in range(20):
 		var slot = ItemSlotClass.new(i);
 		slotList.append(slot);
 		add_child(slot);
-	
-	slotList[0].setItem(itemList[0]);
-	slotList[1].setItem(itemList[1]);
-	slotList[2].setItem(itemList[2]);
+	for j in range(len(itemList)):
+		slotList[j].setItem(itemList[j]);
 	
 	pass
 
@@ -65,7 +44,13 @@ func _gui_input(event):
 			if isClicked:
 				clickedSlot = slot;
 		
-		if holdingItem != null:
+		if holdingItem == null and clickedSlot == null:
+			return;
+		
+		if clickedSlot == null:
+			return;
+			
+		if holdingItem != null and clickedSlot != null:
 			if clickedSlot.item != null:
 				var tempItem = clickedSlot.item;
 				var oldSlot = slotList[slotList.find(holdingItem.itemSlot)];

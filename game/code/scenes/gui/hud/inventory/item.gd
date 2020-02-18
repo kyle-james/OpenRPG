@@ -6,14 +6,16 @@ var itemName;
 var itemSlot;
 var picked = false;
 
-func _init(itemName, itemTexture, itemSlot, itemValue):
+func _init(itemName, itemTexture, itemSlot, itemValue, itemSource):
+	itemIcon = itemIcon
 	name = itemName;
 	self.itemName = itemName;
 	texture = itemTexture;
-	hint_tooltip = "Name: %s\n\nValue: %d" % [itemName, itemValue];
+	hint_tooltip = str("Name: ", itemName, "\nValue: ", itemValue, "\nResource Pack: ", itemSource)
 	self.itemSlot = itemSlot;
 	mouse_filter = Control.MOUSE_FILTER_PASS;
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND;
+	itemValue = itemValue
 	pass
 	
 func pickItem():

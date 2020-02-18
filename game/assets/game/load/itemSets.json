@@ -1,0 +1,14 @@
+{
+	"OpenRPG":{
+		"loadSet": true,
+		"path": "user://game/content/itemList.json"
+	},
+	"Test":{
+		"loadSet": true,
+		"path": "user://resourcepacks/test/itemList.json"
+	},
+	"Test0":{
+		"loadSet": false,
+		"path": "user://resourcepacks/test0/itemList.json"
+	}
+}

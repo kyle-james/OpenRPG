@@ -1,0 +1,26 @@
+	{
+	"Longboi":{
+		"name": "Longboi",
+		"price": 500,
+		"type": "weapon",
+		"texture": "user://game/content/textures/items/weapons/swords/longboi.png"
+	},
+	"Shortboi":{
+		"name": "Shortboi",
+		"price": 300,
+		"type": "weapon",
+		"texture": "user://game/content/textures/items/weapons/swords/shortboi.png"
+	},
+	"Sword":{
+		"name": "Sword",
+		"price": 100,
+		"type": "weapon",
+		"texture": "user://game/content/textures/items/weapons/swords/sword.png"
+	},
+	"Ring":{
+		"name": "Ring",
+		"price": 100,
+		"type": "ring",
+		"texture": "user://game/content/textures/items/weapons/swords/sword.png"
+	}
+}	

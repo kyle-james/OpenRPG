@@ -1,0 +1,20 @@
+{
+	"Test0":{
+		"name": "test0",
+		"price": 500,
+		"type": "weapon",
+		"texture": "user://game/content/textures/items/weapons/swords/longboi.png"
+	},
+	"test1":{
+		"name": "test1",
+		"price": 300,
+		"type": "weapon",
+		"texture": "user://game/content/textures/items/weapons/swords/longboi.png"
+	},
+	"test2":{
+		"name": "test2",
+		"price": 100,
+		"type": "weapon",
+		"texture": "user://game/content/textures/items/weapons/swords/longboi.png"
+	}
+}
