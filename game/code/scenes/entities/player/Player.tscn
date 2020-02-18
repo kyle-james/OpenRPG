@@ -12,7 +12,9 @@ height = 35.9188
 
 [node name="Player" type="Node2D"]
 
-[node name="PlayerBody" type="KinematicBody2D" parent="."]
+[node name="PlayerBody" type="KinematicBody2D" parent="." groups=[
+"Living",
+]]
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
